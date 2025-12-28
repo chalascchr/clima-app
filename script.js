@@ -44,12 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
   try {
     showLoading();
     clearWeatherData();
+    
+    //== ⚠️aqui se hace la llamada al backend⚠️==//
+    const url = `https://clima-app-backend.onrender.com/weather?city=${encodeURIComponent(city)}`;
 
-    const API_KEY = "0875b58daffa430bf4b5a6e14b286d37"; // tu key
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+    /*const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
       city
-    )}&units=metric&lang=es&appid=${API_KEY}`;
-
+    )}&units=metric&lang=es&appid=${API_KEY}`;*/
     const response = await axios.get(url);
 
     hideLoading();
@@ -84,23 +85,24 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 
-  function renderWeather(data) {
-    hideLoading();
-    if (!data) return;
+ function renderWeather(data) {
+  hideLoading();
+  if (!data) return;
 
-    const city = data.name;
-    const temp = Math.round(data.main.temp);
-    const feels = Math.round(data.main.feels_like);
-    const hum = data.main.humidity;
-    const desc = data.weather?.[0]?.description || "";
+  const city = data.city;
+  const temp = Math.round(data.temp);
+  const feels = Math.round(data.feels_like);
+  const hum = data.humidity;
+  const desc = data.description || "";
 
-    weatherData.innerHTML = `
-      <h2>${city}</h2>
-      <p><strong>Temperatura:</strong> ${temp}°C</p>
-      <p><strong>Sensación térmica:</strong> ${feels}°C</p>
-      <p><strong>Humedad:</strong> ${hum}%</p>
-      <p><strong>Descripción:</strong> ${desc}</p>
-    `;
-  }
+  weatherData.innerHTML = `
+    <h2>${city}</h2>
+    <p><strong>Temperatura:</strong> ${temp}°C</p>
+    <p><strong>Sensación térmica:</strong> ${feels}°C</p>
+    <p><strong>Humedad:</strong> ${hum}%</p>
+    <p><strong>Descripción:</strong> ${desc}</p>
+  `;
+}
+
 
 });

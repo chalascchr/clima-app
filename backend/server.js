@@ -8,7 +8,13 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors()); // por ahora abierto (en el Paso 4 lo cerramos a tu dominio)
+app.use(
+  cors({
+    origin: "https://clima-app-y2dw.onrender.com",
+    methods: ["GET"],
+  })
+);
+
 app.use(express.json());
 
 // Health check
@@ -26,7 +32,7 @@ app.get("/api/weather", async (req, res) => {
 
     const API_KEY = process.env.OPENWEATHER_API_KEY;
     if (!API_KEY) {
-      return res.status(500).json({ error: "Falta OPENWEATHER_API_KEY en .env" });
+      return res.status(500).json({ error: "Falta OPENWEATHER_API_KEY en variables de entorno" });
     }
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
@@ -68,8 +74,9 @@ app.get("/health", (req, res) => {
   res.json({ ok: true, status: "healthy" });
 });
 
+//==⚠️ COMENTADO TEMPORALMENTE ⚠️==//
 // Weather endpoint
-app.get("/weather", async (req, res) => {
+/*app.get("/weather", async (req, res) => {
   try {
     const city = req.query.city || "Santo Domingo";
     const apiKey = process.env.OPENWEATHER_API_KEY;
@@ -98,15 +105,16 @@ app.get("/weather", async (req, res) => {
   } catch (err) {
     return res.status(500).json({ ok: false, error: "Error consultando OpenWeather", detail: String(err) });
   }
-});
+});*/
 
-app.get("/forecast", async (req, res) => {
+//==⚠️ COMENTADO TEMPORALMENTE ⚠️==//
+/*app.get("/forecast", async (req, res) => {
   try {
     const city = req.query.city || "Santo Domingo";
     const apiKey = process.env.OPENWEATHER_API_KEY;
 
     if (!apiKey) {
-      return res.status(500).json({ ok: false, error: "Falta OPENWEATHER_API_KEY en .env" });
+      return res.status(500).json({ ok: false, error: "Falta OPENWEATHER_API_KEY en variables de entorno"});
     }
 
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(
@@ -139,9 +147,9 @@ app.get("/forecast", async (req, res) => {
       detail: String(err),
     });
   }
-});
+});*/
 
 
 app.listen(PORT, () => {
-  console.log(`✅ Backend corriendo en http://localhost:${PORT}`);
+  console.log(`✅ Backend corriendo en puerto ${PORT}`);
 });
