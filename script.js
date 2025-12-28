@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("🔥 FRONTEND ACTUAL | URL BACKEND:", url);
 
     const response = await axios.get(url);
+    console.log("DATA DESDE BACKEND:", response.data);
 
     hideLoading();
 
@@ -87,15 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 
- function renderWeather(data) {
+function renderWeather(data) {
   hideLoading();
   if (!data) return;
 
-  const city = data.city;
-  const temp = Math.round(data.temp);
-  const feels = Math.round(data.feels_like);
-  const hum = data.humidity;
-  const desc = data.description || "";
+  const city = data.name;
+  const temp = Math.round(data.main.temp);
+  const feels = Math.round(data.main.feels_like);
+  const hum = data.main.humidity;
+  const desc = data.weather?.[0]?.description || "";
 
   weatherData.innerHTML = `
     <h2>${city}</h2>
@@ -105,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <p><strong>Descripción:</strong> ${desc}</p>
   `;
 }
+
 
 
 });
