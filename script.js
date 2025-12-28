@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearWeatherData();
     
     //== ⚠️aqui se hace la llamada al backend⚠️==//
-    const url = `https://clima-app-backend.onrender.com/weather?city=${encodeURIComponent(city)}`;
+    const url = `https://clima-app-backend.onrender.com/api/weather?city=${encodeURIComponent(city)}`;
 
     /*const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
       city
