@@ -1,0 +1,155 @@
+/* =========================
+   Paso 6.A — Reset + Base
+   ========================= */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base general */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Utilidades */
+.hidden {
+  display: none;
+}
+
+/* Tipografía base */
+header h1 {
+  font-size: 2.3rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* Contenedor centrado */
+main {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* --- Formulario de Búsqueda (boton y recuadro de busqueda) --- */
+#search-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+#city-input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+#city-input:focus {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+#search-form button {
+  padding: 12px 20px;
+  background-color: #ff7f75;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#search-form button:hover {
+  background-color: #ff6f63;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Paso 6.C: Tarjeta de resultados --- */
+#weather-data {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+}
+
+#weather-data h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+#weather-data p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+#weather-data strong {
+  color: #222;
+}
+
+/* =========================
+   Paso 6.D — Estados de carga y error
+   ========================= */
+
+#loading-message,
+#error-message {
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+#loading-message {
+  background-color: #fff7e5;
+  color: #aa6b00;
+}
+
+#error-message {
+  background-color: #ff4b5c;
+  color: white;
+}
+
+/* =========================
+   Paso 6.E — Responsive (Mobile)
+   ========================= */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  #search-form {
+    flex-direction: column;
+  }
+
+  #city-input,
+  #search-form button {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  main {
+    max-width: 100%;
+  }
+}

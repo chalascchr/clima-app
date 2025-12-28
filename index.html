@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ClimaApp — Consulta el Tiempo</title>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Todo el contenido irá aquí -->
+    <header>
+        <h1>ClimaApp 🌤️</h1>
+        <p>Descubre el estado del tiempo en cualquier ciudad del mundo</p>
+    </header>
+
+    <main>
+        <form id="search-form">
+            <input type="text" id="city-input" placeholder="Ej: Barcelona, Tokyo, New York"
+                aria-label="Ingresa el nombre de una ciudad" required />
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="weather-data">
+            <!-- Los datos del clima se cargarán aquí dinámicamente con JavaScript -->
+        </div>
+
+        <div id="loading-message" class="hidden">
+            Cargando datos del clima...
+        </div>
+
+        <div id="error-message" class="hidden"></div>
+
+
+    </main>
+
+         <!--//==Axios==//-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

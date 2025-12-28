@@ -1,0 +1,19 @@
+# Node / Backend
+node_modules/
+.env
+.env.*
+npm-debug.log*
+
+# Docker
+.dockerignore
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
