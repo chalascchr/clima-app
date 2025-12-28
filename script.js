@@ -51,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /*const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
       city
     )}&units=metric&lang=es&appid=${API_KEY}`;*/
+    console.log("🔥 FRONTEND ACTUAL | URL BACKEND:", url);
+
     const response = await axios.get(url);
 
     hideLoading();
